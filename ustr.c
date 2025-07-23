@@ -64,7 +64,14 @@ concatenating s1 and s2.
 */
 UStr concat(UStr s1, UStr s2) {
 	// TODO: implement this
-	
+    int total_len = s1.bytes + s2.bytes;
+    char* combined = malloc(total_len + 1);
+    strcpy(combined, s1.contents);
+    strcat(combined, s2.contents);
+
+    UStr result = new_ustr(combined);
+    free(combined);
+    return result;	
 }
 
 /*
